@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -59,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
     //TODO: File/JSON logic
     protected void loadLists() {
         // Start @ readJsonStream, don't forget try/catch
+    }
+
+    // starts activity to create new course when "+" button is clicked
+    public void createNewCourse(View view) {
+        Intent intent = new Intent(this, CreateNewCourseActivity.class);
+        startActivity(intent);
     }
 
     //TODO: onCourseSelected (look @ onAgendaItemSelected)
