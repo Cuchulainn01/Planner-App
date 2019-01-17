@@ -12,23 +12,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textColor="@color/colorPrimaryDark"
+        android:text="dick"
+        android:textColor="@color/secondaryDarkColor"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BlueBar"
-        tools:text="Name:" />
+        tools:text="@string/name" />
 
     <ImageView
         android:id="@+id/BlueBar"
         android:layout_width="415dp"
         android:layout_height="78dp"
-        android:contentDescription="Blue"
+        android:contentDescription="@string/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/colorPrimaryDark" />
+        app:srcCompat="@color/primaryLightColor" />
 
     <TextView
         android:id="@+id/CoursesText"
@@ -37,8 +37,8 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Add Course"
-        android:textColor="@android:color/background_light"
+        android:text="@string/add_course"
+        android:textColor="@android:color/background_dark"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="@+id/BlueBar"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,9 +52,9 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Enter course name"
+        android:hint="@string/enter_course_name"
         android:inputType="textPersonName"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@android:color/background_dark"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Name"
@@ -66,7 +66,8 @@
         android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="42dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/primaryDarkColor"
+        android:onClick="createNewCourse"
         android:text="Button"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
