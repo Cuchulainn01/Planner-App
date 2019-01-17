@@ -45,7 +45,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CL
     @Override
     public void onBindViewHolder(@NonNull CLViewHolder clViewHolder, int pos) {
         Course course = m_arrCourses.get(pos);
-        clViewHolder.
+        clViewHolder.tvCourseName.setText(course.name);
     }
 
     @Override
