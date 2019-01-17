@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
     //TODO: write to userData file
     private static final String FILE_NAME_USER_DATA = "userData.json";
 
-    //TODO: create course class
-    //TODO: create task class
     private ArrayList<Course> arrCourseList;
 
     //TODO: create list adapters
