@@ -17,7 +17,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CL
     private OnCourseItemSelectedListener m_Listener;
 
     public interface OnCourseItemSelectedListener {
-        void onCourseItemSelected(Course course);
+        void onCourseItemSelected(int pos, Course course);
     }
 
     public CourseListAdapter(ArrayList<Course> courses, Context context) {
@@ -47,7 +47,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CL
         Course course = m_arrCourses.get(pos);
         String strText = String.format("%s (%d tasks)",course.getName(), course.getTaskCount());
         clViewHolder.tvCourseName.setText(strText);
-        clViewHolder.bind(course, m_Listener);
+        clViewHolder.bind(pos, course, m_Listener);
     }
 
     @Override
@@ -63,10 +63,10 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CL
             tvCourseName = itemView.findViewById(R.id.id_tvCourseName);
         }
 
-        public void bind(final Course course, final OnCourseItemSelectedListener listener) {
+        public void bind(final int pos, final Course course, final OnCourseItemSelectedListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    listener.onCourseItemSelected(course);
+                    listener.onCourseItemSelected(pos, course);
                 }
             });
         }

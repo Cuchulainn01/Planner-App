@@ -56,6 +56,10 @@ public class TaskListActivity extends AppCompatActivity
             if (m_tlAdapter != null) {
                 m_tlAdapter.setArrTasks(this.m_currentCourse.m_arrTasks);
             }
+            Intent intent = getIntent();
+            data.putExtra("course", m_currentCourse);
+            setResult(Activity.RESULT_OK, data);
+            finish();
         }
     }
 
@@ -72,4 +76,12 @@ public class TaskListActivity extends AppCompatActivity
         startActivity(m_intentTaskDetail);
 
     }
+
+//    @Override
+//    protected void onStop() {
+//        Intent data = getIntent();
+//        data.putExtra("taskList", m_currentCourse.m_arrTasks);
+//        setResult(Activity.RESULT_OK, data);
+//        super.onStop();
+//    }
 }

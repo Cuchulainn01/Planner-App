@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity
 
     //TODO: write to userData file
     private static final String FILE_NAME_USER_DATA = "userData.json";
-    private static final int REQUEST_COURSE_NAME = 0;
 
     private UserData m_ud;
 
@@ -116,6 +115,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private static final int REQUEST_COURSE_NAME = 0;
     // starts activity to create new course when "+" button is clicked
     public void createNewCourse(View view) {
         Intent intent = new Intent(this, CreateNewCourseActivity.class);
@@ -132,18 +132,32 @@ public class MainActivity extends AppCompatActivity
                 m_clAdapter.setArrCourses(this.m_ud.getCourseList());
             }
         }
+        if(requestCode == REQUEST_UPDATED_COURSE && resultCode == Activity.RESULT_OK) {
+            Course course = (Course) data.getExtras().getParcelable("course");
+            m_ud.getCourseList().set(lastClickedPos, course);
+//            lastClicked.setTasks(newTaskList);
+            m_clAdapter.notifyDataSetChanged();
+        }
     }
 
     private Intent m_intentTaskList;
     public static final String COURSE_KEY = "Course";
+    private static final int REQUEST_UPDATED_COURSE = 1;
+
+    public Course lastClicked;
+    public int lastClickedPos;
+
     @Override
-    public void onCourseItemSelected(Course course) {
+    public void onCourseItemSelected(int pos, Course course) {
         if ( m_intentTaskList == null ) {
             m_intentTaskList = new Intent(this, TaskListActivity.class);
         }
 
+        lastClicked = course;
+        lastClickedPos = pos;
+
         m_intentTaskList.putExtra(MainActivity.COURSE_KEY, course);
-        startActivity(m_intentTaskList);
+        startActivityForResult(m_intentTaskList, REQUEST_UPDATED_COURSE);
 
     }
 
