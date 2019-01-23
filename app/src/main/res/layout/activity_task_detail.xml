@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskDetailActivity">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".TaskDetailActivity">
+
+    <!-- layout for screen once you click on specific event on Agenda (own page) -->
+
+        <TextView
+            android:id="@+id/id_tvTDTaskName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:padding = "2dp"
+            android:textColor ="@color/primaryDarkColor"
+            android:textStyle="bold"
+            android:textSize ="24dp"/>
+
+        <TextView
+            android:id="@+id/id_tvDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tvTDTaskName"
+            android:padding = "2dp"
+            android:textColor ="@color/primaryDarkColor"
+            android:textSize ="18dp"
+            android:text="Due Date:"/>
+
+        <TextView
+            android:id="@+id/id_tvTDDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tvTDTaskName"
+            android:layout_toRightOf="@id/id_tvDueDate"
+            android:padding = "2dp"
+            android:textColor ="@color/primaryLightColor"
+            android:textSize ="18dp"/>
+
+        <TextView
+            android:id="@+id/id_tvNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tvDueDate"
+            android:padding = "2dp"
+            android:textColor ="@color/primaryDarkColor"
+            android:textSize ="18dp"
+            android:text="Notes:"/>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tvNotes"
+            android:layout_alignParentLeft="true" >
+
+            <TextView
+                android:id="@+id/id_tvTDNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="web|phone|map"
+                android:linksClickable="true"
+                android:padding = "2dp"
+                android:textColor ="@color/primaryLightColor"
+                android:textSize ="18dp" />
+        </ScrollView>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

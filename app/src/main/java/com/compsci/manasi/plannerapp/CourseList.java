@@ -10,8 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class CourseView extends Fragment {
-    private RecyclerView m_rvEvents;
+// TODO: Add "m_" or "m" prefix to ALL members?? none
+// TODO: Add TaskList class, along with fragment_coursedetail.xml
+// TODO: Enable fragment_coursedetail.xml in activity_main.xml
+
+public class CourseList extends Fragment {
+    private RecyclerView m_rvCourseList;
     private MainActivity m_mainActivity;
     private CourseListAdapter m_claAdapter;
 
@@ -19,15 +23,15 @@ public class CourseView extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
+    private String m_Param1;
+    private String m_Param2;
 
-    public CourseView() {
+    public CourseList() {
         // Required empty public constructor
     }
 
-    public static CourseView newInstance(String param1, String param2) {
-        CourseView fragment = new CourseView();
+    public static CourseList newInstance(String param1, String param2) {
+        CourseList fragment = new CourseList();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -47,8 +51,8 @@ public class CourseView extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            m_Param1 = getArguments().getString(ARG_PARAM1);
+            m_Param2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -56,12 +60,12 @@ public class CourseView extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vw = inflater.inflate(R.layout.fragment_course_view, container, false);
-        RecyclerView rv = (RecyclerView) vw.findViewById(R.id.id_rvCourses);
-        // Bind the AgendaListAdapter to the RecyclerView
-        rv.setAdapter(m_claAdapter);
+        View vw = inflater.inflate(R.layout.fragment_courselist, container, false);
+        RecyclerView rv = vw.findViewById(R.id.id_rvCourseList);
+        // Bind the CourseListAdapter to the RecyclerView
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         rv.setLayoutManager(llm);
+        rv.setAdapter(m_claAdapter);
         m_claAdapter.notifyDataSetChanged();
         rv.setClickable(true);
 

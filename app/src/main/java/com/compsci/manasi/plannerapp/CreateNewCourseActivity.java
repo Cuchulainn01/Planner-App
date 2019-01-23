@@ -1,5 +1,6 @@
 package com.compsci.manasi.plannerapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -25,16 +26,37 @@ public class CreateNewCourseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_new_course);
     }
 
-    // calls method to add course to JSON model
-    // returns to MainActivity
+    //TODO: change so the course is created here, added to list in MainActivity
     public void createNewCourse(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent data = getIntent();
         EditText enterName = findViewById(R.id.EnterName);
         String courseName = enterName.getText().toString();
-        writeCourseToUserData(courseName);
-//        intent.putExtra(EXTRA_NAME, name);
-        startActivity(intent);
+        data.putExtra("course", new Course(courseName));
+        setResult(Activity.RESULT_OK, data);
+        finish();
     }
+
+//    @Override
+//    public void finish() {
+//        Intent data = new Intent();
+//        EditText enterName = findViewById(R.id.EnterName);
+//        String courseName = enterName.getText().toString();
+//        data.putExtra("courseName", courseName);
+//        setResult(RESULT_OK, data);
+//        super.finish();
+//    }
+
+    // calls method to add course to JSON model
+    // returns to MainActivity
+//    public void createNewCourse(View view) {
+////        Intent intent = new Intent(this, MainActivity.class);
+//        EditText enterName = findViewById(R.id.EnterName);
+//        String courseName = enterName.getText().toString();
+//        writeCourseToUserData(courseName);
+//        finish();
+////        intent.putExtra(EXTRA_NAME, name);
+////        startActivity(intent);
+//    }
 
     @SuppressWarnings("unchecked")
     private void writeCourseToUserData(String courseName) {

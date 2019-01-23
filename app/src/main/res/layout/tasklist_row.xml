@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding = "2sp">
+
+    <!-- defines the content displayed in each row of TaskList -->
+
+    <!--TODO: FIGURE OUT LAYOUT-->
+    <TextView
+        android:id="@+id/id_tvDueDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:padding = "2dp"
+        android:textColor ="@color/primaryDarkColor"
+        android:textStyle="bold"
+        android:textSize ="20dp"/>
+    <TextView
+        android:id="@+id/id_tvTaskName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/id_tvDueDate"
+        android:paddingTop="2dp"
+        android:paddingLeft="15dp"
+        android:textColor ="@color/primaryDarkColor"
+        android:textSize ="20dp"/>
+
+</RelativeLayout>

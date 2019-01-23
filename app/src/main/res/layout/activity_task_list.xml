@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TaskListActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/TasksText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:paddingLeft="8dp"
+            android:background="@color/primaryLightColor"
+            android:text="Tasks"
+            android:textColor="@android:color/primary_text_dark_nodisable"
+            android:textSize="50sp" />
+
+        <Button
+            android:id="@+id/AddButton"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:background="@android:color/background_light"
+            android:onClick="createNewTask"
+            android:text="+"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:layout_weight="0"
+            />
+
+    </LinearLayout>
+
+    <fragment android:name="com.compsci.manasi.plannerapp.TaskList"
+        android:id="@+id/id_fragment_TaskList"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        />
+
+    <!--Enable this fragment once CourseDetails are implemented-->
+    <!--<fragment android:name="com.compsci.manasi.plannerapp.CourseDetails"-->
+    <!--android:id="@+id/id_fragment_CourseDetails"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="0"-->
+    <!--android:layout_width="match_parent"/>-->
+
+    <!--<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/CoursesText"-->
+    <!--android:id="@+id/id_rvCourseList"/>-->
+
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/id_rvCourseList"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="621dp"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:layout_marginEnd="8dp"-->
+    <!--android:layout_marginStart="8dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.488"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/BlueBar"-->
+    <!--app:layout_constraintVertical_bias="0.0" />-->
+</LinearLayout>

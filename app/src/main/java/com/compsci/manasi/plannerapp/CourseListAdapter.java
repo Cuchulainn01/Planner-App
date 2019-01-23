@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CLViewHolder> {
 
     private ArrayList<Course> m_arrCourses;
-    Context m_context;
-    OnCourseItemSelectedListener m_Listener;
+    private Context m_context;
+    private OnCourseItemSelectedListener m_Listener;
 
     public interface OnCourseItemSelectedListener {
         void onCourseItemSelected(Course course);
@@ -26,26 +26,28 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CL
         if (context instanceof OnCourseItemSelectedListener) {
             this.m_Listener = (OnCourseItemSelectedListener) context;
         } else {
-            throw new RuntimeException(context.toString() + " must implement OnAgendaItemSelectedListener");
+            throw new RuntimeException(context.toString() + " must implement OnCourseItemSelectedListener");
         }
     }
 
-    public void setArrCourses(ArrayList<Course> m_arrCourses) {
-        this.m_arrCourses = m_arrCourses;
+    public void setArrCourses(ArrayList<Course> arrCourses) {
+        this.m_arrCourses = arrCourses;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public CLViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View vw = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_view_row, parent, false);
+        View vw = LayoutInflater.from(parent.getContext()).inflate(R.layout.courselist_row, parent, false);
         return new CLViewHolder(vw);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CLViewHolder clViewHolder, int pos) {
         Course course = m_arrCourses.get(pos);
-        clViewHolder.tvCourseName.setText(course.name);
+        String strText = String.format("%s (%d tasks)",course.getName(), course.getTaskCount());
+        clViewHolder.tvCourseName.setText(strText);
+        clViewHolder.bind(course, m_Listener);
     }
 
     @Override
