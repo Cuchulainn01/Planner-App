@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity
         loadDummyData();
     }
 
+    //TODO: prepopulate with believable data
     private void loadDummyData() {
         int i, j;
 
