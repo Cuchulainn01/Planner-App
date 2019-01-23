@@ -9,9 +9,13 @@ import android.os.Bundle;
 import android.util.JsonReader;
 import android.view.View;
 
+import com.google.gson.Gson;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
 import java.util.ArrayList;
 
 //TODO: Task stuff may have to go within CourseActivity
@@ -30,9 +34,9 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         m_ud = new UserData();
+        loadLists(); // JSON Reader
         setContentView(R.layout.activity_main);
 
-        loadLists(); // JSON Reader
         if (m_clAdapter != null) {
             m_clAdapter.setArrCourses(this.m_ud.getCourseList());
         }
@@ -63,14 +67,15 @@ public class MainActivity extends AppCompatActivity
     // TODO: create "userData.json" if it doesn't already exist, do nothing if blank
     // Start @ readJsonStream, don't forget try/catch
     protected void loadLists() {
-        if (null == this.m_ud.getCourseList()) {
-            this.m_ud.setCourseList(new ArrayList<Course>());
+        if (null == m_ud.getCourseList()) {
+            m_ud.setCourseList( new ArrayList<Course>());
         } else {
-            this.m_ud.getCourseList().clear();
+            m_ud.getCourseList().clear();
         }
 
         try {
-            JsonReader reader = new JsonReader(new InputStreamReader(openFileInput(FILE_NAME_USER_DATA)));
+            Gson gson = new Gson();
+            Reader reader = new InputStreamReader(openFileInput(FILE_NAME_USER_DATA));
             readCourses(reader);
             reader.close();
         } catch (IOException ex) {
@@ -82,8 +87,23 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
-        // TODO: Remove this call when JSON Reader/Writer is working
+        // TODO: Remove this call when JSON Reader/Writer is working, DON'T NEED ANYMORE
         loadDummyData();
+    }
+
+
+    private void readCourses(Reader reader) {
+        m_ud.setCourseList(new ArrayList<Course>());
+        Gson gson = new Gson();
+        UserData ud = null;
+
+        try {
+            ud = (UserData) gson.fromJson(reader, UserData.class);
+        } catch (Exception e) {
+        }
+        if ( null != ud ) {
+            this.m_ud = ud;
+        }
     }
 
     //TODO: prepopulate with believable data
@@ -101,16 +121,15 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void readCourses(JsonReader reader) {
-        this.m_ud.setCourseList(new ArrayList<Course>());
-
+    private void saveUserData() {
+        OutputStreamWriter writer = null;
+        Gson gson = new Gson();
+        String strJson;
         try {
-            while (reader.hasNext()) {
-                reader.beginObject();
-                String name = reader.nextName();
-                m_ud.getCourseList().add(new Course(name));
-                reader.endObject();
-            }
+            writer = new OutputStreamWriter(openFileOutput(FILE_NAME_USER_DATA, MODE_PRIVATE));
+            strJson = gson.toJson(m_ud);
+            writer.write(strJson);
+            writer.close();
         } catch (Exception e) {
 
         }
@@ -131,12 +150,13 @@ public class MainActivity extends AppCompatActivity
             m_ud.getCourseList().add((Course) data.getExtras().getParcelable("course"));
             if (m_clAdapter != null) {
                 m_clAdapter.setArrCourses(this.m_ud.getCourseList());
+                saveUserData();
             }
         }
         if(requestCode == REQUEST_UPDATED_COURSE && resultCode == Activity.RESULT_OK) {
             Course course = (Course) data.getExtras().getParcelable("course");
             m_ud.getCourseList().set(lastClickedPos, course);
-//            lastClicked.setTasks(newTaskList);
+            saveUserData();
             m_clAdapter.notifyDataSetChanged();
         }
     }

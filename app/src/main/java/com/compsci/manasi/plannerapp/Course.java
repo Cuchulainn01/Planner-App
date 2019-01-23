@@ -3,11 +3,15 @@ package com.compsci.manasi.plannerapp;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class Course implements Parcelable {
 
+    @SerializedName("CourseName")
     public String m_strName;
+    @SerializedName("Tasks")
     public ArrayList<Task> m_arrTasks;
 
     public Course(String name, ArrayList<Task> tasks) {

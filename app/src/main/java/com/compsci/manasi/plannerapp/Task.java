@@ -3,14 +3,20 @@ package com.compsci.manasi.plannerapp;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.time.LocalDateTime;
 
 public class Task implements Parcelable {
 
+    @SerializedName("TaskName")
     public String m_strName;
+    @SerializedName("TaskDueDate")
     public String m_strDueDate;
 //    public LocalDateTime notificationTime; // may need specific format for push notifications
+    @SerializedName("TaskNotes")
     public String m_strNotes;
+    @SerializedName("isComplete")
     public boolean m_boolIsComplete;
 
     //TODO: set parameters as null when creating object in JSON reader, easier than making all possible constructors

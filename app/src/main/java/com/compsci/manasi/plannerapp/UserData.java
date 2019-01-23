@@ -1,8 +1,11 @@
 package com.compsci.manasi.plannerapp;
 
 import java.util.ArrayList;
+import com.google.gson.annotations.SerializedName;
 
 public class UserData {
+
+    @SerializedName("Courses")
     private ArrayList<Course> m_arrCourseList;
 
     public UserData(ArrayList<Course> courses) {
