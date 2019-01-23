@@ -3,8 +3,10 @@ package com.compsci.manasi.plannerapp;
 import java.util.ArrayList;
 import com.google.gson.annotations.SerializedName;
 
+// 1 object for all of the user's information
 public class UserData {
 
+    // serializes the courseList for writing to JSON
     @SerializedName("Courses")
     private ArrayList<Course> m_arrCourseList;
 

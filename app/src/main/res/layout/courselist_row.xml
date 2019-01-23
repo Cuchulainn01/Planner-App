@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:padding = "2sp">
 
-    <!-- defines the content displayed in each row of CourseList-->
+    <!-- defines the content displayed about each Course each row of CourseList-->
 
     <TextView
         android:id="@+id/id_tvCourseName"

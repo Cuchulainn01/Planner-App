@@ -6,6 +6,9 @@
     android:orientation="vertical"
     tools:context=".TaskListActivity">
 
+    <!--Overall screen that TaskList is displayed on-->
+    <!--Includes fragment for TaskList RecyclerView-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

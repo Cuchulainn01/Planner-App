@@ -10,9 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-// TODO: Add "m_" or "m" prefix to ALL members?? none
-// TODO: Add TaskList class, along with fragment_coursedetail.xml
-// TODO: Enable fragment_coursedetail.xml in activity_main.xml
+// Fragment that CourseList RecyclerView is displayed in
 
 public class CourseList extends Fragment {
     private RecyclerView m_rvCourseList;
@@ -39,6 +37,7 @@ public class CourseList extends Fragment {
         return fragment;
     }
 
+    // called when layout is initialized
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -56,6 +55,7 @@ public class CourseList extends Fragment {
         }
     }
 
+    // inflates view, adds CourseListAdapter to the RecyclerView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

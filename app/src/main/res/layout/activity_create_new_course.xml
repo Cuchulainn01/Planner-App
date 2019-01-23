@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".CreateNewCourseActivity">
 
+    <!--layout for screen to create new course-->
+
     <TextView
         android:id="@+id/Name"
         android:layout_width="wrap_content"

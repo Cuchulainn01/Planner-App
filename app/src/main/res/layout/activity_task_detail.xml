@@ -13,7 +13,8 @@
         android:layout_height="match_parent"
         tools:context=".TaskDetailActivity">
 
-    <!-- layout for screen once you click on specific event on Agenda (own page) -->
+    <!-- layout for screen once you click on a specific Task, shows details about the Task (own page) -->
+    <!--gets text (specific to Task) to display from TaskDetailActivity-->
 
         <TextView
             android:id="@+id/id_tvTDTaskName"

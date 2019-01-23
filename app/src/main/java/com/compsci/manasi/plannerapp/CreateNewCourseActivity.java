@@ -18,7 +18,6 @@ import org.json.simple.JSONObject;
 public class CreateNewCourseActivity extends AppCompatActivity {
 
     private static final String FILE_NAME_USER_DATA = "userData.json";
-//    public static final String EXTRA_NAME = "com.compsci.manasi.plannerapp.NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +25,8 @@ public class CreateNewCourseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_new_course);
     }
 
-    //TODO: change so the course is created here, added to list in MainActivity
+    // Called when enter button is clicked
+    // Creates the Course based on name given by user, returns Course object to MainActivity
     public void createNewCourse(View view) {
         Intent data = getIntent();
         EditText enterName = findViewById(R.id.EnterName);
@@ -36,40 +36,4 @@ public class CreateNewCourseActivity extends AppCompatActivity {
         finish();
     }
 
-//    @Override
-//    public void finish() {
-//        Intent data = new Intent();
-//        EditText enterName = findViewById(R.id.EnterName);
-//        String courseName = enterName.getText().toString();
-//        data.putExtra("courseName", courseName);
-//        setResult(RESULT_OK, data);
-//        super.finish();
-//    }
-
-    // calls method to add course to JSON model
-    // returns to MainActivity
-//    public void createNewCourse(View view) {
-////        Intent intent = new Intent(this, MainActivity.class);
-//        EditText enterName = findViewById(R.id.EnterName);
-//        String courseName = enterName.getText().toString();
-//        writeCourseToUserData(courseName);
-//        finish();
-////        intent.putExtra(EXTRA_NAME, name);
-////        startActivity(intent);
-//    }
-
-    @SuppressWarnings("unchecked")
-    private void writeCourseToUserData(String courseName) {
-        JSONObject obj = new JSONObject();
-        obj.put("Name", courseName);
-        FileOutputStream outputStream;
-
-        try {
-            outputStream = openFileOutput(FILE_NAME_USER_DATA, Context.MODE_APPEND);
-            outputStream.write(obj.toJSONString().getBytes());
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

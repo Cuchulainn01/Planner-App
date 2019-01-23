@@ -6,6 +6,7 @@
     tools:context=".TaskList">
 
     <!-- sets up RecyclerView (don't load until necessary) for TaskList -->
+    <!--included in TaskListActivity layout-->
 
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"

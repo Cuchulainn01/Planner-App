@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".CreateNewTaskActivity">
 
+    <!--layout for screen to create new task-->
+
     <TextView
         android:id="@+id/Name"
         android:layout_width="wrap_content"

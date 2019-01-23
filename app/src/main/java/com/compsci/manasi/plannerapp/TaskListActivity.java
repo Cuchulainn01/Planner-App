@@ -9,6 +9,8 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+// Overall screen the TaskList fragment is displayed on
+// Started by MainActivity when a Course item is clicked
 public class TaskListActivity extends AppCompatActivity
         implements TaskListAdapter.OnTaskItemSelectedListener{
 
@@ -40,13 +42,15 @@ public class TaskListActivity extends AppCompatActivity
 
     private static final int REQUEST_TASK_DETAILS = 1;
 
-    //TODO: createNewTaskActivity
     // starts activity to create new task when "+" button is clicked
     public void createNewTask(View view) {
         Intent intent = new Intent(this, CreateNewTaskActivity.class);
         startActivityForResult(intent, REQUEST_TASK_DETAILS);
     }
 
+    // called when Task is returned from CreateNewTaskActivity
+    // adds task to currentCourse
+    // returns currentCourse to MainActivity to update userData
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -63,9 +67,10 @@ public class TaskListActivity extends AppCompatActivity
         }
     }
 
-    //TODO: TaskDetailActivity
     private Intent m_intentTaskDetail;
     public static final String TASK_KEY = "Task";
+    //Called when Task item is selected from TaskList
+    // Starts activity to display TaskDetails
     @Override
     public void onTaskItemSelected(Task task) {
         if ( m_intentTaskDetail == null ) {
@@ -76,7 +81,7 @@ public class TaskListActivity extends AppCompatActivity
         startActivity(m_intentTaskDetail);
 
     }
-
+    // Old code, may be useful later
 //    @Override
 //    protected void onStop() {
 //        Intent data = getIntent();

@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 public class TaskDetailActivity extends AppCompatActivity {
 
-
+    // Called when Task is clicked from TaskList
+    // sets text to be displayed for each Task
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,7 @@ public class TaskDetailActivity extends AppCompatActivity {
 
     }
 
+    // helper method to reduce repeated code
     private void setTextForView(int idTxtView, String text) {
         TextView tv = findViewById(idTxtView);
         tv.setText(text);

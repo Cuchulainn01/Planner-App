@@ -4,9 +4,8 @@
     android:layout_height="wrap_content"
     android:padding = "2sp">
 
-    <!-- defines the content displayed in each row of TaskList -->
+    <!-- defines the content displayed about each Task in each row of TaskList -->
 
-    <!--TODO: FIGURE OUT LAYOUT-->
     <TextView
         android:id="@+id/id_tvDueDate"
         android:layout_width="wrap_content"

@@ -10,12 +10,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+// takes a List of Courses and adapts it so the RecyclerView can display it
 public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CLViewHolder> {
 
     private ArrayList<Course> m_arrCourses;
     private Context m_context;
     private OnCourseItemSelectedListener m_Listener;
 
+    // implemented by MainActivity
     public interface OnCourseItemSelectedListener {
         void onCourseItemSelected(int pos, Course course);
     }
@@ -35,6 +37,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CL
         notifyDataSetChanged();
     }
 
+    // Sets layout for each row of CourseList
     @NonNull
     @Override
     public CLViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
@@ -42,6 +45,8 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.CL
         return new CLViewHolder(vw);
     }
 
+    // Sets text from Course objects to be displayed in each row of CourseList
+    // bind describes what information is associated with each each row
     @Override
     public void onBindViewHolder(@NonNull CLViewHolder clViewHolder, int pos) {
         Course course = m_arrCourses.get(pos);

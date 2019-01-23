@@ -7,20 +7,22 @@ import com.google.gson.annotations.SerializedName;
 
 import java.time.LocalDateTime;
 
+// implements Parcelable so Task objects can be passed between activities
 public class Task implements Parcelable {
 
+    // Serializes member variables for storing as JSON object
     @SerializedName("TaskName")
     public String m_strName;
     @SerializedName("TaskDueDate")
     public String m_strDueDate;
-//    public LocalDateTime notificationTime; // may need specific format for push notifications
+//    public LocalDateTime notificationTime; // to be be implemented for push notifications
     @SerializedName("TaskNotes")
     public String m_strNotes;
     @SerializedName("isComplete")
     public boolean m_boolIsComplete;
 
-    //TODO: set parameters as null when creating object in JSON reader, easier than making all possible constructors
-    public Task(String name, String dueDate, String notes, boolean isComplete) { // TODO: Add notification stuff, make dates date objects
+
+    public Task(String name, String dueDate, String notes, boolean isComplete) {
         this.m_strName = name;
         this.m_strDueDate = dueDate;
 //        this.notificationTime = notificationTime;
@@ -28,6 +30,7 @@ public class Task implements Parcelable {
         this.m_boolIsComplete = isComplete;
     }
 
+    // Parcelable Interface methods
     @Override
     public int describeContents() {
         return 0;

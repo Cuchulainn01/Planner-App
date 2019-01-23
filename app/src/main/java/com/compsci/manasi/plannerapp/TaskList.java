@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+// Fragment that TaskList RecyclerView is displayed on
 public class TaskList extends Fragment {
 
     private RecyclerView m_rvCTaskList;
@@ -53,6 +54,7 @@ public class TaskList extends Fragment {
         }
     }
 
+    // assigns TaskListAdapter to RecyclerView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

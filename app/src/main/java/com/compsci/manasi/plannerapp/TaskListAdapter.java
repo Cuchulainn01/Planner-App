@@ -10,12 +10,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+// adapts List of Tasks to display in RecyclerView
 public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TLViewHolder> {
 
     private ArrayList<Task> m_arrTasks;
     private Context m_context;
     private OnTaskItemSelectedListener m_Listener;
 
+    // implemented by TaskListActivity
     public interface OnTaskItemSelectedListener {
         void onTaskItemSelected(Task task);
     }
@@ -35,6 +37,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TLView
         notifyDataSetChanged();
     }
 
+    // sets layout for each row of TaskList
     @NonNull
     @Override
     public TLViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
@@ -42,6 +45,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TLView
         return new TLViewHolder(vw);
     }
 
+    // sets text for each row of TaskList, and info passed with the row
     @Override
     public void onBindViewHolder(@NonNull TLViewHolder tlViewHolder, int pos) {
         Task task = m_arrTasks.get(pos);

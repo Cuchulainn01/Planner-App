@@ -18,12 +18,11 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.util.ArrayList;
 
-//TODO: Task stuff may have to go within CourseActivity
 
 public class MainActivity extends AppCompatActivity
     implements CourseListAdapter.OnCourseItemSelectedListener {
 
-    //TODO: write to userData file
+    //File name where user data is stored
     private static final String FILE_NAME_USER_DATA = "userData.json";
 
     private UserData m_ud;
@@ -42,18 +41,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        loadLists();
-//        if(m_clAdapter != null) {
-//            m_clAdapter.setArrCourses(this.arrCourseList);
-//        }
-//    }
-
-//    private Intent m_intentTaskList;
-//    private Intent m_intentTaskDetail;
-
     public ArrayList<Course> getArrCourseList() {
         return m_ud.getCourseList();
     }
@@ -62,10 +49,8 @@ public class MainActivity extends AppCompatActivity
         this.m_clAdapter = clAdapter;
     }
 
-
-    // TODO: File/JSON logic
-    // TODO: create "userData.json" if it doesn't already exist, do nothing if blank
-    // Start @ readJsonStream, don't forget try/catch
+    // opens reader to read userData.json
+    // passes reader to readCourses
     protected void loadLists() {
         if (null == m_ud.getCourseList()) {
             m_ud.setCourseList( new ArrayList<Course>());
@@ -80,18 +65,20 @@ public class MainActivity extends AppCompatActivity
             reader.close();
         } catch (IOException ex) {
             try {
-                FileOutputStream outputStream = openFileOutput(FILE_NAME_USER_DATA, Context.MODE_PRIVATE); // TODO: check if this creates file in right spot and only if doesn't exist
+                // create userData.json if doesn't exist
+                FileOutputStream outputStream = openFileOutput(FILE_NAME_USER_DATA, Context.MODE_PRIVATE);
                 outputStream.close();
             } catch (IOException ioEx) {
 
             }
         }
 
-        // TODO: Remove this call when JSON Reader/Writer is working, DON'T NEED ANYMORE
-        loadDummyData();
+        // For testing, don't need currently
+//        loadDummyData();
     }
 
 
+    // creates arrCourseList and adds to m_ud
     private void readCourses(Reader reader) {
         m_ud.setCourseList(new ArrayList<Course>());
         Gson gson = new Gson();
@@ -106,7 +93,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    //TODO: prepopulate with believable data
+    //pre-loads fake data for testing
     private void loadDummyData() {
         int i, j;
 
@@ -121,6 +108,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    // writes m_ud to userData.json, called every time new Task or Course is created
     private void saveUserData() {
         OutputStreamWriter writer = null;
         Gson gson = new Gson();
@@ -142,7 +130,7 @@ public class MainActivity extends AppCompatActivity
         startActivityForResult(intent, REQUEST_COURSE_NAME);
     }
 
-    //TODO: figure out why this isn't getting called
+    // called when activities that were started for results finish
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -165,9 +153,12 @@ public class MainActivity extends AppCompatActivity
     public static final String COURSE_KEY = "Course";
     private static final int REQUEST_UPDATED_COURSE = 1;
 
+    // For knowing which Course the TaskList is from, and which one to update when a new Task is created
     public Course lastClicked;
     public int lastClickedPos;
 
+    // Called when a Course is clicked from the CourseList
+    //starts TaskListActivity
     @Override
     public void onCourseItemSelected(int pos, Course course) {
         if ( m_intentTaskList == null ) {

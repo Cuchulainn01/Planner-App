@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+// called when "+" button is clicked from Tasks screen
 public class CreateNewTaskActivity extends AppCompatActivity {
 
     @Override
@@ -15,6 +16,8 @@ public class CreateNewTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_new_task);
     }
 
+    // called when "Enter" button is clicked
+    // creates a Task from user input, returns task to TaskListActivity
     public void createNewTask(View view) {
         Intent data = getIntent();
         EditText name = findViewById(R.id.EnterTaskName);

@@ -7,8 +7,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
+// implements Parcelable so Course objects can be passed between activities
 public class Course implements Parcelable {
 
+    // serialize class members for storage as JSON object
     @SerializedName("CourseName")
     public String m_strName;
     @SerializedName("Tasks")
@@ -36,6 +38,7 @@ public class Course implements Parcelable {
         return (null == this.m_arrTasks ? 0 : m_arrTasks.size());
     }
 
+    // below are all the Parcelable methods
     @Override
     public int describeContents() {
         return 0;
